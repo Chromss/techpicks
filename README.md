@@ -1,4 +1,4 @@
-## Identitas Rroyek
+## Identitas Proyek
 
 - Nama: Nabil Zahid Rahman
 - NPM: 2306203324
