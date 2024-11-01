@@ -6,7 +6,7 @@
 - Asdos: Fernando Valentino Sitinjak (NAN)
 - Repositori: https://github.com/Chromss/techpicks
 
-## Tugas 7 Checkpoint
+## Penjelasan Tugas 7
 
 ### 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
 Stateless widget adalah jenis widget pada framework Flutter yang tidak memiliki keadaan yang berubah selama menampilkan projek dalam suatu peramban web. Widget ini hanya dibangun sekali dan tidak akan diperbarui sampai parent widget yang memuatnya berubah. Contoh penggunaan stateless widget termasuk teks statis, gambar, dan elemen UI lainnya yang tidak memerlukan interaksi pengguna atau perubahan data apapun.
@@ -31,15 +31,15 @@ Sementara itu, variabel yang dideklarasikan dengan `const` memiliki nilai yang h
 - Pada projek Flutter ini, Saya memberi nama aplikasi e-commerce "TechPicks". Untuk memulai, pada direktori yang sudah ditentukan, buat program Flutter dengan command `flutter create techpicks` pada terminal.
 - Direktori `techpicks` terbuat beserta subdirektori-subdirektori di dalamnya yang merupakan built-in dari Flutter.
 
-**2. Membuat tiga tombol sederhana dengan ikon dan teks**
+- [x] ** Membuat tiga tombol sederhana dengan ikon dan teks**
 - Buat class `ItemHomepage` dengan atribut `name`, `icon`, dan `bgcolor` yang mengatur teks tombol, ikon, beserta warna latarnya.
 - Agregasikan `ItemHomepage` ke `ItemCard`, yakni class yang mengatur struktur tombol secara keseluruhan beserta penempatannya pada widget.
 - Lakukan casting ke `MyHomePage` untuk membuat tiga tombol yang sesuai. Tombol-tombol tersebut diperuntukkan pada melihat daftar produk, menambah produk, dan log out.
 
-**3. Mengimplementasikan warna berbeda untuk setiap tombol**
+- [x] **Mengimplementasikan warna berbeda untuk setiap tombol**
 - Dari atribut `bgcolor` yang ada, konfigurasikan pengaturan warna latar di method `build` di class `Widget`. Untuk hal itu, tambahkan line `color: item.bgcolor,` agar ketika objek di cast, kustomisasi warna latar dapat diimplementasikan.
 - Lakukan casting ke `MyHomePage` dengan mencantumkan warna yang diinginkan menggunakan format RGBO `const Color.fromRGBO(r,g,b,o)`. Pastikan warna yang digunakan berbeda antara satu sama lain.
 
-**4. Memunculkan snackbar**
+- [x] **Memunculkan snackbar**
 - Pada blok `Widget build`, tambahkan Class `SnackBar` yang berguna menampilkan suatu pesan setelah ditekannya tombol. Agar dapat interaktif, atur event listener dengan menambahkan sintaks `onTap` yang me-wrap `SnackBar` tersebut. Lakukan kustomisasi tampilan `SnackBar` dengan mengatur konten dan warna latarnya.
 - Atur pesan `SnackBar` sesuai tombol apa yang ditekan. Untuk penyesuaian tersebut, gunakan tag `${item.name}`.
