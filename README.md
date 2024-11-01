@@ -27,7 +27,7 @@ Perbedaan antara `const` dengan `final` dalam Dart terletak pada bagaimana nilai
 Sementara itu, variabel yang dideklarasikan dengan `const` memiliki nilai yang harus ditetapkan pada waktu kompilasi dan tidak dapat diubah. `Const` juga memastikan bahwa nilai tersebut benar-benar konstan dan tidak dapat diubah di sisi mana pun dalam program. Dengan demikian, penggunaan `const` dan `final` bergantung pada kebutuhan aplikasi untuk mengelola suatu variabel.
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
-**- [x] Membuat sebuah program Flutter baru**
+- [x] **Membuat sebuah program Flutter baru**
 - Pada projek Flutter ini, Saya memberi nama aplikasi e-commerce "TechPicks". Untuk memulai, pada direktori yang sudah ditentukan, buat program Flutter dengan command `flutter create techpicks` pada terminal.
 - Direktori `techpicks` terbuat beserta subdirektori-subdirektori di dalamnya yang merupakan built-in dari Flutter.
 
