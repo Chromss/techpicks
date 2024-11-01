@@ -6,9 +6,9 @@ class MyHomePage extends StatelessWidget {
   final String name = 'Nabil Zahid Rahman'; // Nama
   final String className = 'PBP A'; // Kelas
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Mood", Icons.mood),
-    ItemHomepage("Tambah Mood", Icons.add),
-    ItemHomepage("Logout", Icons.logout),
+    ItemHomepage("Lihat Daftar Produk", Icons.list, const Color.fromRGBO(244,151,142,1)),
+    ItemHomepage("Tambah Produk", Icons.add, const Color.fromRGBO(248,173,157,1)),
+    ItemHomepage("Logout", Icons.logout, const Color.fromRGBO(251,196,171,1)),
   ];
 
   @override
@@ -19,14 +19,17 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         // Judul aplikasi "Mental Health Tracker" dengan teks putih dan tebal.
         title: const Text(
-          'Mental Health Tracker',
+          'TechPicks',
           style: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.bold,
+            fontFamily: 'Geist',
+            fontWeight: FontWeight.w500,
+            fontSize: 24,
+            letterSpacing: -0.5,
           ),
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Color.fromRGBO(40,42,58,1),
       ),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
@@ -58,10 +61,12 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Welcome to Mental Health Tracker',
+                      'Welcome to TechPicks!',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 26,
+                        letterSpacing: -0.5,
                       ),
                     ),
                   ),
@@ -93,27 +98,35 @@ class MyHomePage extends StatelessWidget {
 
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.
-
   final ItemHomepage item;
-
   const ItemCard(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       // Menentukan warna latar belakang dari tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.bgcolor,
       // Membuat sudut kartu melengkung.
       borderRadius: BorderRadius.circular(12),
 
       child: InkWell(
         // Aksi ketika kartu ditekan.
         onTap: () {
-          // Menampilkan pesan SnackBar saat kartu ditekan.
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-                SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+              SnackBar(
+                content: Text(
+                  "You have successfully clicked ${item.name}!",
+                  style: const TextStyle(
+                    fontFamily: 'Geist',
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                backgroundColor: Color.fromRGBO(40,42,58,1),
+              ),
             );
         },
         // Container untuk menyimpan Icon dan Text
@@ -126,14 +139,19 @@ class ItemCard extends StatelessWidget {
               children: [
                 Icon(
                   item.icon,
-                  color: Colors.white,
-                  size: 30.0,
+                  color: Colors.black,
+                  size: 34.0,
                 ),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                    fontFamily: 'Geist',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.5,
+                    height: 1.2,
+                    color: Colors.black),
                 ),
               ],
             ),
@@ -167,10 +185,22 @@ class InfoCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontFamily: 'Geist',
+                fontWeight: FontWeight.w600,
+                letterSpacing: -0.5,)
             ),
             const SizedBox(height: 8.0),
-            Text(content),
+            Text(
+              content,
+              style: const TextStyle(
+                fontFamily: 'Geist',
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.5,
+                height: 1.2,
+                color: Colors.black,
+              ),
+            ),
           ],
         ),
       ),
@@ -181,6 +211,7 @@ class InfoCard extends StatelessWidget {
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color bgcolor;
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.bgcolor);
 }

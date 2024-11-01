@@ -1,16 +1,10 @@
-# techpicks
+- Nama: Nabil Zahid Rahman
+- NPM: 2306203324
+- Kelas: PBP-A
+- Repository: https://github.com/Chromss/techpicks
 
-A new Flutter project.
+## Tugas 7 Checkpoint
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
+Stateless widget adalah jenis widget di Flutter yang tidak memiliki keadaan yang berubah selama siklus hidupnya. Widget ini hanya dibangun sekali dan tidak akan diperbarui sampai parent widget yang memuatnya diubah. Contoh penggunaan stateless widget termasuk teks statis, gambar, dan elemen UI lainnya yang tidak memerlukan interaksi pengguna atau perubahan data.
+Stateful widget, di sisi lain, adalah widget yang memiliki keadaan yang dapat berubah. Stateful widget dapat menyimpan dan mengelola state internal yang memungkinkan tampilan widget diperbarui secara dinamis saat data berubah. Perbedaan utama antara keduanya terletak pada kemampuan stateful widget untuk merespons perubahan dan memperbarui tampilannya, sedangkan stateless widget tidak memiliki kemampuan tersebut.
