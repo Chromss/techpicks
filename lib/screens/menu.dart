@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:techpicks/widgets/product_card.dart';
+import 'package:techpicks/widgets/left_panel.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -6,8 +8,8 @@ class MyHomePage extends StatelessWidget {
   final String name = 'Nabil Zahid Rahman';
   final String className = 'PBP A';
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Daftar Produk", Icons.list, const Color.fromRGBO(244,151,142,1)),
-    ItemHomepage("Tambah Produk", Icons.add, const Color.fromRGBO(248,173,157,1)),
+    ItemHomepage("Product List", Icons.format_list_bulleted, const Color.fromRGBO(244,151,142,1)),
+    ItemHomepage("Add Product", Icons.shopping_bag, const Color.fromRGBO(248,173,157,1)),
     ItemHomepage("Logout", Icons.logout, const Color.fromRGBO(251,196,171,1)),
   ];
 
@@ -26,12 +28,14 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Color.fromRGBO(40,42,58,1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: [ 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -80,67 +84,6 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: item.bgcolor,
-      borderRadius: BorderRadius.circular(16),
-
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(
-                  "You have successfully clicked ${item.name}!",
-                  style: const TextStyle(
-                    fontFamily: 'Geist',
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-                backgroundColor: Color.fromRGBO(40,42,58,1),
-              ),
-            );
-        },
-
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.black,
-                  size: 34.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontFamily: 'Geist',
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.5,
-                    height: 1.2,
-                    color: Colors.black),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class InfoCard extends StatelessWidget {
   final String title;
   final String content;
@@ -178,12 +121,4 @@ class InfoCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class ItemHomepage {
-  final String name;
-  final IconData icon;
-  final Color bgcolor;
-
-  ItemHomepage(this.name, this.icon, this.bgcolor);
 }

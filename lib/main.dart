@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:techpicks/menu.dart';
+import 'package:techpicks/screens/menu.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() {
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'TechPicks',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
