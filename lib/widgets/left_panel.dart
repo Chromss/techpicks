@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techpicks/screens/list_product.dart';
 import 'package:techpicks/screens/menu.dart';
 import 'package:techpicks/screens/product_form.dart';
 
@@ -79,6 +80,27 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProductFormPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text(
+              'Product List',
+              style: TextStyle(
+                fontFamily: 'Geist',
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+                color: Colors.black,
+                letterSpacing: -0.75,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductPage(),
                 ),
               );
             },

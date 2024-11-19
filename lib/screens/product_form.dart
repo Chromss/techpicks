@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class ProductFormPage extends StatefulWidget {
   const ProductFormPage({super.key});
@@ -10,10 +13,12 @@ class _ProductFormPageState extends State<ProductFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   String _description = "";
-  int _amount = 0;
+  int _price = 0;
   
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -118,8 +123,8 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "e.g. 15",
-                    labelText: "Amount",
+                    hintText: "e.g. 300000",
+                    labelText: "Price (IDR)",
                     hintStyle: const TextStyle(
                       fontFamily: 'Geist',
                       fontWeight: FontWeight.w400,
@@ -143,19 +148,19 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      _amount = int.tryParse(value!) ?? 0;
+                      _price = int.tryParse(value!) ?? 0;
                     });
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return "Amount can't be empty!";
+                      return "Price can't be empty!";
                     }
                     final theValue = int.tryParse(value);
                     if (theValue == null) {
-                      return "Amount must be an integer!";
+                      return "Price must be an integer!";
                     }
                     if (theValue <= 0) {
-                      return "Amount must be positive!";
+                      return "Price must be positive!";
                     }
                     return null;
                   },
@@ -170,65 +175,82 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       backgroundColor: WidgetStateProperty.all(
                           Color.fromRGBO(50,121,230,1)),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text(
-                                'Product Has Been Successfully Added!',
-                                style: TextStyle(
-                                  fontFamily: 'Geist',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: -0.5,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              content: SingleChildScrollView(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Name: $_name',
-                                      style: TextStyle(
-                                        fontFamily: 'Geist',
-                                        fontSize: 16,
-                                        letterSpacing: -0.5,
-                                      ),
+                        final response = await request.postJson(
+                          "http://127.0.0.1:8000/create-flutter/",
+                          jsonEncode(<String, String>{
+                            'name': _name,
+                            'price': _price.toString(),
+                            'description': _description,
+                          }),
+                        );
+
+                        if (context.mounted) {
+                          if (response['status'] == 'success') {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    'Product Has Been Successfully Added!',
+                                    style: TextStyle(
+                                      fontFamily: 'Geist',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: -0.5,
                                     ),
-                                    Text(
-                                      'Description: $_description',
-                                      style: TextStyle(
-                                        fontFamily: 'Geist',
-                                        fontSize: 16,
-                                        letterSpacing: -0.5,
-                                      ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Name: $_name',
+                                          style: TextStyle(
+                                            fontFamily: 'Geist',
+                                            fontSize: 16,
+                                            letterSpacing: -0.5,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Description: $_description',
+                                          style: TextStyle(
+                                            fontFamily: 'Geist',
+                                            fontSize: 16,
+                                            letterSpacing: -0.5,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Price: $_price',
+                                          style: TextStyle(
+                                            fontFamily: 'Geist',
+                                            fontSize: 16,
+                                            letterSpacing: -0.5,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      'Amount: $_amount',
-                                      style: TextStyle(
-                                        fontFamily: 'Geist',
-                                        fontSize: 16,
-                                        letterSpacing: -0.5,
-                                      ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      child: const Text('OK'),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        _formKey.currentState!.reset();
+                                      },
                                     ),
                                   ],
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    _formKey.currentState!.reset();
-                                  },
-                                ),
-                              ],
+                                );
+                              },
                             );
-                          },
-                        );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("An error occurred. Please try again."),
+                            ));
+                          }
+                        }
                       }
                     },
                     child: const Text(
