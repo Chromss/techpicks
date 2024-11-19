@@ -248,6 +248,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text("An error occurred. Please try again."),
+                              backgroundColor: Color.fromRGBO(40,42,58,1),
                             ));
                           }
                         }

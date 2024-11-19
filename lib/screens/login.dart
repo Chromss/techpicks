@@ -43,7 +43,16 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text(
+          'Login',
+          style: TextStyle(
+            fontFamily: 'Geist',
+            fontSize: 24.0,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.75,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -61,16 +70,38 @@ class _LoginPageState extends State<LoginPage> {
                   const Text(
                     'Login',
                     style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Geist',
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.75,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 30.0),
                   TextField(
                     controller: _usernameController,
+                    style: const TextStyle(
+                      fontFamily: 'Geist',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      fontSize: 16.0,
+                      letterSpacing: -0.5,
+                    ),
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       hintText: 'Enter your username',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
+                      labelStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       ),
@@ -81,9 +112,28 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 12.0),
                   TextField(
                     controller: _passwordController,
+                    style: const TextStyle(
+                      fontFamily: 'Geist',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      fontSize: 16.0,
+                      letterSpacing: -0.5,
+                    ),
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       hintText: 'Enter your password',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
+                      labelStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       ),
@@ -116,8 +166,10 @@ class _LoginPageState extends State<LoginPage> {
                             ..hideCurrentSnackBar()
                             ..showSnackBar(
                               SnackBar(
-                                  content:
-                                  Text("$message Welcome to TechPicks, $uname.")),
+                                content:
+                                Text("$message Welcome to TechPicks, $uname."),
+                                backgroundColor: Color.fromRGBO(40,42,58,1),
+                              )
                             );
                         }
                       } else {
@@ -146,7 +198,16 @@ class _LoginPageState extends State<LoginPage> {
                       backgroundColor: Color.fromRGBO(40,42,58,1),
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
-                    child: const Text('Login'),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        letterSpacing: -0.5,
+                        color: Colors.white,
+                      ),
+                    )
                   ),
                   const SizedBox(height: 36.0),
                   GestureDetector(
@@ -157,13 +218,26 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => const RegisterPage()),
                       );
                     },
-                    child: Text(
-                      'Don\'t have an account? Register',
-                      style: TextStyle(
-                        color: Color.fromRGBO(40,42,58,1),
-                        fontSize: 16.0,
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          color: Color.fromRGBO(40, 42, 58, 1),
+                          fontFamily: 'Geist',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          letterSpacing: -0.75,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(text: 'Do not have an account yet? '),
+                          TextSpan(
+                            text: 'Register.',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    )
                   ),
                 ],
               ),

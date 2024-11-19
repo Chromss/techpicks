@@ -21,12 +21,15 @@ class _RegisterPageState extends State<RegisterPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        title: const Text(
+          'Register',
+          style: TextStyle(
+            fontFamily: 'Geist',
+            fontSize: 24.0,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.75,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Center(
@@ -45,8 +48,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   const Text(
                     'Register',
                     style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Geist',
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.75,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 30.0),
@@ -55,11 +61,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       hintText: 'Enter your username',
+                      labelStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       ),
                       contentPadding:
-                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                          EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -74,11 +92,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       hintText: 'Enter your password',
+                      labelStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       ),
                       contentPadding:
-                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                          EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                     ),
                     obscureText: true,
                     validator: (value) {
@@ -94,11 +124,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(
                       labelText: 'Confirm Password',
                       hintText: 'Confirm your password',
+                      labelStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(107, 107, 107, 1),
+                        fontSize: 16.0,
+                        letterSpacing: -0.5,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       ),
                       contentPadding:
-                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                          EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                     ),
                     obscureText: true,
                     validator: (value) {
@@ -126,6 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Successfully registered!'),
+                              backgroundColor: Color.fromRGBO(40,42,58,1),
                             ),
                           );
                           Navigator.pushReplacement(
@@ -137,6 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Failed to register!'),
+                              backgroundColor: Color.fromRGBO(40,42,58,1),
                             ),
                           );
                         }
@@ -145,10 +189,19 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 50),
-                      backgroundColor: Color.fromRGBO(40,42,58,1),
+                      backgroundColor: Color.fromRGBO(40, 42, 58, 1),
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
-                    child: const Text('Register'),
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(
+                        fontFamily: 'Geist',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        letterSpacing: -0.5,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),
